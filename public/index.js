@@ -270,7 +270,7 @@ class PhoneCatalogue {
     this._el = options.el;
     this._phones = options.phones;
 
-    const template = document.querySelector('#phone-catalogue-template').innerHTML;
+    const template = __webpack_require__(3);
     this._compiledTemplate = _.template(template);
 
     this._render();
@@ -286,5 +286,12 @@ class PhoneCatalogue {
 
 
 
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = "<ul class=\"phones\">\n\n  <% phones.forEach((phone) => { %>\n\n  <li class=\"thumbnail\">\n    <a href=\"#!/phones/<%= phone.id %>\" class=\"thumb\">\n      <img alt=\"<%- phone.name %>\"\n           src=\"<%= phone.imageUrl %>\">\n    </a>\n    <a href=\"#!/phones/<%= phone.id %>\"><%- phone.name %></a>\n    <p><%- phone.snippet %></p>\n  </li>\n\n  <% }); %>\n</ul>"
+
 /***/ })
 /******/ ]);
+//# sourceMappingURL=index.js.map

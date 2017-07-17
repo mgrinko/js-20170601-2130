@@ -1,11 +1,15 @@
 const path = require('path');
 
 module.exports = {
-  entry: './frontend/app.js',
+  entry: {
+    index: './frontend/app.js',
+    login: './frontend/login.js'
+  },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'public')
   },
 
   watch: true,
+  devtool: 'source-map',
 };
