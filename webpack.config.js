@@ -46,12 +46,14 @@ module.exports = {
     new UglifyJSPlugin({
       sourceMap: true
     }),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Phone Page Template',
+      template: 'my-index.ejs',
+    })
   ],
 
   devServer: {
     hot: true, // Tell the dev-server we're using HMR
-    inline: true,
     contentBase: path.resolve(__dirname, 'public'),
     publicPath: '/'
   }
