@@ -8,7 +8,7 @@ module.exports = {
     login: './frontend/login.js'
   },
   output: {
-    filename: '[name].[hash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'public')
   },
 
