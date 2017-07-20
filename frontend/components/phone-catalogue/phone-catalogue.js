@@ -13,7 +13,7 @@ export default class PhoneCatalogue extends Component {
 
     this._render();
 
-    this._el.addEventListener('click', this._onPhoneClick.bind(this));
+    this.on('click', this._onPhoneClick.bind(this), '[data-element="phone"]');
   }
 
   _render() {
@@ -25,14 +25,8 @@ export default class PhoneCatalogue extends Component {
   _onPhoneClick(event) {
     let phoneElement = event.target.closest('[data-element="phone"]');
 
-    if (!phoneElement) {
-      return;
-    }
-
-    let customEvent = new CustomEvent('phoneSelected', {
-      detail: phoneElement.dataset.phoneId
-    });
-
-    this._el.dispatchEvent(customEvent);
+    this.trigger('phoneSelected', phoneElement.dataset.phoneId);
   }
+
+
 }
