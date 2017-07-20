@@ -14,6 +14,10 @@ export default class PhoneCatalogue {
     this._el.addEventListener('click', this._onPhoneClick.bind(this));
   }
 
+  hide() {
+    this._el.classList.add('js-hidden');
+  }
+
   _render() {
     this._el.innerHTML = compiledTemplate({
       phones: this._phones
@@ -23,10 +27,14 @@ export default class PhoneCatalogue {
   _onPhoneClick(event) {
     let phoneElement = event.target.closest('[data-element="phone"]');
 
-    if (phoneElement) {
+    if (!phoneElement) {
       return;
     }
 
-    console.log(phoneElement.dataset.phoneId);
+    let customEvent = new CustomEvent('phoneSelected', {
+      detail: phoneElement.dataset.phoneId
+    });
+
+    this._el.dispatchEvent(customEvent);
   }
 }
