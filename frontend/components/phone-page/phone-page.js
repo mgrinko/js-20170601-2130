@@ -16,9 +16,13 @@ export default class PhonePage {
       el: this._el.querySelector('[data-component="phone-viewer"]'),
     });
 
-
-
     this._catalogue._el.addEventListener('phoneSelected', this._onPhoneSelected.bind(this))
+    this._viewer._el.addEventListener('back', this._onPhoneViewerBack.bind(this))
+  }
+
+  _onPhoneViewerBack() {
+    this._viewer.hide();
+    this._catalogue.show();
   }
 
   _onPhoneSelected(event) {
