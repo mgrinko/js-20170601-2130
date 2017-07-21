@@ -18,7 +18,7 @@ export default class ShoppingCart extends Component {
 
   _render() {
     this._el.innerHTML = compiledTemplate({
-      phone: this._phone
+      products: this._products
     });
   }
 }
