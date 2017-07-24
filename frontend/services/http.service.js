@@ -1,4 +1,4 @@
-const API_URL = '/data/';
+const API_URL = '/data';
 
 export default class HTTPService {
 
