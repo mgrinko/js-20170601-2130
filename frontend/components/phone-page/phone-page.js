@@ -37,17 +37,25 @@ export default class PhonePage {
 
   _onPhoneSelected(event) {
     let phoneId = event.detail;
-    let phone = this._getPhoneDetails(phoneId);
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', `/data/phones/${phoneId}.json`, false);
+    xhr.send();
+
+    if (xhr.status != 200) {
+      alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+
+      return;
+    }
+
+    let phone = JSON.parse(xhr.responseText);
 
     this._viewer.setPhone(phone);
-
     this._viewer.show();
     this._catalogue.hide();
   }
 
-  _getPhoneDetails(phonesId) {
-    return phoneFromServer;
-  }
 }
 
 const phonesFromServer = [
